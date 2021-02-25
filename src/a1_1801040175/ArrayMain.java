@@ -114,6 +114,16 @@ public class ArrayMain {
 		return 0;
 	}
 
+	/**
+	 * Find the median number in an real array
+	 * 
+	 * @requires: arr neq /\ arr sorted
+	 * @return
+	 */
+	public double median(double[] arr) {
+		return 0.0;
+	}
+
 	public static void main(String[] args) {
 
 	}
