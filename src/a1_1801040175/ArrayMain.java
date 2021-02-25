@@ -133,6 +133,25 @@ public class ArrayMain {
 		return 0.0;
 	}
 
+	/**
+	 * Detemine the relationship between 2 arbitrary arrays
+	 * 
+	 * @requires: arr1 != null /\ arr2 != null /\ arr1 != arr2
+	 * @effects: the relationship of 2 arbitrary array
+	 * 
+	 *           <pre>
+	 *           i.e: arr1 is subset of arr2 -> arr1.length < arr2.length /\ x[i] in
+	 *           arr2 /\ x[i] not in arr1 \/ arr1 intersect with arr2 -> [x in arr1 /\ x in arr2].length < arr1.length /\ x[i] in
+	 *           arr2 /\ x[i] not in arr1
+	 *           <pre>
+	 *           e.g: 
+	 * 
+	 */
+	
+	public void compare(double[] arr1, double[] arr2) {
+
+	}
+
 	public static void main(String[] args) {
 
 	}
