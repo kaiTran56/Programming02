@@ -118,7 +118,16 @@ public class ArrayMain {
 	 * Find the median number in an real array
 	 * 
 	 * @requires: arr neq /\ arr sorted
-	 * @return
+	 * @effects: return the number which is median
+	 * 
+	 *           <pre>
+	 *           i.e: return numb wher <br>
+	 *           arr[x in arr | x[i] < x[i+1]]/\ n = arr.length /\ n % 2 != 0 ->
+	 *           numb = arr[(n+1)/2-1] \/ n%2 == 0 -> numb = (arr[n/2] + arr[n/2 -
+	 *           1])/2
+	 * 
+	 *           <pre>
+	 *           e.g: length([1,2,3,4]) = 2.5
 	 */
 	public double median(double[] arr) {
 		return 0.0;
