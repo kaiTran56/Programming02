@@ -1,5 +1,8 @@
 package a1_1801040175;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArrayMain {
 
 	/**
@@ -141,18 +144,51 @@ public class ArrayMain {
 	 * 
 	 *           <pre>
 	 *           i.e: arr1 is subset of arr2 -> arr1.length < arr2.length /\ x[i] in
-	 *           arr2 /\ x[i] not in arr1 \/ arr1 intersect with arr2 -> [x in arr1 /\ x in arr2].length < arr1.length /\ x[i] in
-	 *           arr2 /\ x[i] not in arr1
+	 *           arr2 /\ x[i] not in arr1 \/ arr1 intersect with arr2 -> [x in arr1
+	 *           /\ x in arr2].length < arr1.length /\ x[i] in arr2 /\ x[i] not in
+	 *           arr1
+	 * 
 	 *           <pre>
-	 *           e.g: 
+	 *           e.g: compare([1,2,3.5], [1,2,3])=intersect
 	 * 
 	 */
-	
+
 	public void compare(double[] arr1, double[] arr2) {
 
 	}
 
-	public static void main(String[] args) {
+	/**
+	 * Compute the frequencies of each elements of real array
+	 * 
+	 * @requires: arr != null /\ numb != null
+	 * @modifies: numb
+	 * @effects: return the array which is used to store the frequencies of each
+	 *           element in array
+	 * 
+	 *           <pre>
+	 *           i.e: return numb where<br>
+	 *           for all 0 <= i <= arr.length-1 /\ numb.containKeys(arr[i])->
+	 *           numb.put(arr[i], numb.get(arr[i])+1) \/ numb.put(arr[i], 1)
+	 * 
+	 *           <pre>
+	 *           e.g: freq([1,1,2,3.3]) = [2,2,1,1]
+	 * 
+	 */
+	public Map<Double, Integer> freq(double[] arr) {
+		Map<Double, Integer> numb = new HashMap<Double, Integer>();
+		int n = arr.length;
+		for (int i = 0; i < n; i++) {
+			if (numb.containsKey(arr[i])) {
+				numb.put(arr[i], numb.get(arr[i]) + 1);
+			} else {
+				numb.put(arr[i], 1);
+			}
+		}
+		return numb;
+	}
 
+	public static void main(String[] args) {
+		double[] arr = { 1, 2, 1, 2, 3 };
+		new ArrayMain().freq(arr).forEach((k, v) -> System.out.println(k + " : " + v));
 	}
 }
