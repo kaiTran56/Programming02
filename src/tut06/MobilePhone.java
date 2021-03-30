@@ -55,21 +55,44 @@ public class MobilePhone {
 	@DomainConstraint(type = "Boolean", mutable = true, optional = false)
 	private boolean guaranteed;
 
+	@DOpt(type = OptType.Constructor)
 	public MobilePhone(@AttrRef("manName") String manName, @AttrRef("model") String model, @AttrRef("color") char color,
-			@AttrRef("year") int year, @AttrRef("guaranteed") boolean guaranteed) throws NotPossibleException {
+			@AttrRef("year") int year, @AttrRef("guaranteed") boolean guarenteed) throws NotPossibleException {
 
 	}
 
+	/**
+	 * 
+	 * @effects return manName
+	 */
 	@DOpt(type = OptType.Observer)
 	@AttrRef("manName")
 	public String getManName() {
 		return manName;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if manName is valid
+	 * 		set this.manName = manName
+	 * 		return true
+	 * else 
+	 * 		return false
+	 * 
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("manName")
-	public void setManName(String manName) {
-		this.manName = manName;
+	public boolean setManName(String manName) {
+		if (validateManName(manName)) {
+			this.manName = manName;
+			return true;
+
+		} else {
+			return false;
+		}
 	}
 
 	@DOpt(type = OptType.Observer)
@@ -80,81 +103,13 @@ public class MobilePhone {
 
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("model")
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	@DOpt(type = OptType.Observer)
-	@AttrRef("color")
-	public char getColor() {
-		return color;
-	}
-
-	@DOpt(type = OptType.Mutator)
-	@AttrRef("color")
-	public void setColor(char color) {
-		this.color = color;
-	}
-
-	@DOpt(type = OptType.Observer)
-	@AttrRef("year")
-	public int getYear() {
-		return year;
-	}
-
-	@DOpt(type = OptType.Mutator)
-	@AttrRef("year")
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	@DOpt(type = OptType.Observer)
-	@AttrRef("guaranteed")
-	public boolean isGuaranteed() {
-		return guaranteed;
-	}
-
-	@DOpt(type = OptType.Mutator)
-	@AttrRef("guaranteed")
-	public void setGuaranteed(boolean guaranteed) {
-		this.guaranteed = guaranteed;
-	}
-
-	@Override
-	@DOpt(type = OptType.Default)
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
-
-	@Override
-	@DOpt(type = OptType.Default)
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
-
-	@DOpt(type = OptType.Helper)
-	public boolean repOk() {
-		return false;
-	}
-
-	@DOpt(type = OptType.Helper)
-	@AttrRef("nmanName")
-	private boolean validateManName(String manName) {
-		return false;
-	}
-
-	@DOpt(type = OptType.Helper)
-	@AttrRef("model")
-	private boolean validateModel(String model) {
-		return false;
-	}
-
-	@DOpt(type = OptType.Helper)
-	@AttrRef("color")
-	private boolean validateColor(char color) {
-		return false;
+	public boolean setModel(String model) {
+		if (validateModel(model)) {
+			this.model = model;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
