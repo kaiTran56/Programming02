@@ -40,7 +40,27 @@ public class Person {
 	@DomainConstraint(type = "MobilePhone", mutable = true, optional = true)
 	private MobilePhone phone;
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if id , name are valid
+	 * 		initialize this as <id, name>
+	 * else 
+	 * 		throw NotPossibleException
+	 * 
+	 *          </pre>
+	 * 
+	 */
+	@DOpt(type = OptType.Constructor)
 	public Person(@AttrRef("id") int id, @AttrRef("name") String name) throws NotPossibleException {
+		if (!validateId(id)) {
+			throw new NotPossibleException("Person.init: Invalid person id: " + id);
+		}
+		if (!validateName(name)) {
+			throw new NotPossibleException("Person.init: Invalid person name: " + name);
+		}
+
 		this.id = id;
 		this.name = name;
 
@@ -91,53 +111,127 @@ public class Person {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @effects
+	 * 
+	 *          <pre>
+	 * 
+	 * if name is valid 
+	 * 		set this.name = name;
+	 * 		return true
+	 * else
+	 * 		return false
+	 * 
+	 * 
+	 *          </pre>
+	 * 
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("name")
 	public boolean setName(String name) {
-		this.name = name;
+		if (validateName(name)) {
+			this.name = name;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
+	/**
+	 * 
+	 * @effects return phone
+	 */
 	@DOpt(type = OptType.Observer)
 	@AttrRef("phone")
 	public MobilePhone getPhone() {
 		return phone;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * set this.phone = phone 
+	 * return true;
+	 *          </pre>
+	 * 
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("phone")
 	public boolean setPhone(MobilePhone phone) {
 		this.phone = phone;
+		return true;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * 
+	 *if id is valid 
+	 *		return true
+	 *else
+	 *		return false
+	 * 
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("id")
 	private boolean validateId(int id) {
-		return false;
+		return id >= 1;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *               if name is valid return true
+	 * 
+	 *               else return false
+	 * 
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("name")
 	private boolean validateName(String name) {
-		return false;
+		return name != null && name.length() <= 30;
 	}
 
+	/**
+	 * 
+	 * @effects
+	 * 
+	 *          <pre>
+	 * 
+	 * if this satisfies abstarct properties
+	 * 		return true
+	 * 
+	 *	else 
+	 *		return false
+	 * 
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	public boolean repOk() {
-		return false;
+		return validateId(id) && validateName(name);
 	}
 
 	@Override
 	@DOpt(type = OptType.Default)
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		return "Person:<" + id + ", " + name + ", " + phone.toString() + ">";
 	}
 
 	@Override
-	@DOpt(type = OptType.Default)
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if (obj == null || (obj instanceof Person)) {
+			return false;
+		} else {
+			Person other = (Person) obj;
+			return id == other.getId() && name.equals(other.getName());
+		}
 	}
 
 }
