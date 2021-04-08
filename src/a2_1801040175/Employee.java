@@ -264,6 +264,17 @@ public class Employee {
 	}
 
 	// ----------------Mutator----------------
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if id is valid 
+	 *  	set this.id = id
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("id")
 	public boolean setId(int id) {
@@ -276,6 +287,17 @@ public class Employee {
 
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if firstName is valid 
+	 *  	set this.firstName = firstName
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("firstName")
 	public boolean setFirstName(String firstName) {
@@ -287,6 +309,17 @@ public class Employee {
 
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if givenName is valid 
+	 *  	set this.givenName = givenName
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("givenName")
 	public boolean setGivenName(String givenName) {
@@ -297,6 +330,17 @@ public class Employee {
 		return false;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if lastName is valid 
+	 *  	set this.lastName = lastName
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("lastName")
 	public boolean setLastName(String lastName) {
@@ -307,6 +351,17 @@ public class Employee {
 		return false;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if email is valid 
+	 *  	set this.email = email
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("email")
 	public boolean setEmail(String email) {
@@ -318,6 +373,17 @@ public class Employee {
 
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if address is valid 
+	 *  	set this.address = address
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("address")
 	public boolean setAddress(String address) {
@@ -329,6 +395,17 @@ public class Employee {
 
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if phone is valid 
+	 *  	set this.phone = phone
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("phone")
 	public boolean setPhone(String phone) {
@@ -339,6 +416,17 @@ public class Employee {
 		return false;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if dob is valid 
+	 *  	set this.dob = dob
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("dob")
 	public boolean setDob(Date dob) {
@@ -350,6 +438,17 @@ public class Employee {
 
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 *  if gender is valid 
+	 *  	set this.gender = gender
+	 *  	return true
+	 *  else
+	 *  	return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Mutator)
 	@AttrRef("gender")
 	public boolean setGender(Gender gender) {
@@ -361,12 +460,32 @@ public class Employee {
 	}
 
 	// -----------------Helper-----------------
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if id is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("id")
 	private boolean validateId(int id) {
 		return id >= MIN_ID;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if firstName is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("firstName")
 	private boolean validateFirstName(String firstName) {
@@ -377,6 +496,16 @@ public class Employee {
 		}
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if givenName is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("givenName")
 	private boolean validateGivenName(String givenName) {
@@ -387,6 +516,16 @@ public class Employee {
 		}
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if lastName is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("lastName")
 	private boolean validateLastName(String lastName) {
@@ -397,6 +536,16 @@ public class Employee {
 		}
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if email is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("email")
 	private boolean validateEmail(String email) {
@@ -405,6 +554,16 @@ public class Employee {
 
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if address is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("address")
 	private boolean validateAddress(String address) {
@@ -415,6 +574,16 @@ public class Employee {
 		}
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if phone is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("phone")
 	private boolean validatePhone(String phone) {
@@ -432,14 +601,34 @@ public class Employee {
 		return false;
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if dob is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("dob")
 	private boolean validateDob(Date dob) {
-		
+
 		Date dobMin = new Date(1900, 1, 1);
 		return dob.after(dobMin);
 	}
 
+	/**
+	 * @effects
+	 * 
+	 *          <pre>
+	 * if gender is valid 
+	 * 		return true
+	 * else
+	 * 		return false
+	 *          </pre>
+	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("gender")
 	private boolean validateGender(Gender gender) {
