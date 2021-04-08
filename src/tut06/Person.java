@@ -226,7 +226,7 @@ public class Person {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null || (obj instanceof Person)) {
+		if (obj == null || !(obj instanceof Person)) {
 			return false;
 		} else {
 			Person other = (Person) obj;
