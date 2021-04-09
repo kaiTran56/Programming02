@@ -4,13 +4,7 @@ import java.util.Date;
 
 public class Main {
 	public static void main(String[] args) {
-		@Deprecated
-		Date checkDate = new Date();
-		checkDate.setYear(2000);
-		checkDate.setMonth(6);
-		checkDate.setDate(5);
-		
-		System.out.println(checkDate.toString());
-
+		Employee em = new Employee(100, "Nguyên", "Đình Nguyên", "Trần", "Vinh Nghệ An", "(84) 398961689", new Date(2001, 8, 20), Gender.Male);
+		System.out.println(em.toString());
 	}
 }

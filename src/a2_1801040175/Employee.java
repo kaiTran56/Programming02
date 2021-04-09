@@ -158,7 +158,7 @@ public class Employee {
 	 */
 	@DOpt(type = OptType.Observer)
 	public String getName() {
-		return String.format("%s %s", lastName, givenName);
+		return String.format("%s %s %s", lastName, givenName, firstName);
 	}
 
 	/**
