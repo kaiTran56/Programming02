@@ -1,5 +1,6 @@
 package a2_1801040175;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -85,18 +86,25 @@ public class Employee {
 	@DomainConstraint(type = "Gender", mutable = false, optional = false)
 	private Gender gender;
 
+	// constant for the min value of id
 	private final int MIN_ID = 100;
 
+	// constant for the max length of first name
 	private final int MAX_LENGTH_FIRSTNAME = 35;
 
+	// constant for the max length of given name
 	private final int MAX_LENGTH_GIVENNAME = 35;
 
+	// constant for the max length of last name
 	private final int MAX_LENGTH_LASTNAME = 35;
 
+	// constant for the max length of email
 	private final int MAX_LENGTH_EMAIL = 200;
 
+	// constant for the max length of address
 	private final int MAX_LENGTH_ADDRESS = 1500;
 
+	// constant for the max length of phone
 	private final int MAX_LENGTH_PHONE = 20;
 
 	/**
@@ -168,7 +176,9 @@ public class Employee {
 	@DOpt(type = OptType.Observer)
 	@AttrRef("dob")
 	public int getYob() {
-		return dob.getYear();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dob);
+		return calendar.get(Calendar.YEAR);
 	}
 
 	// ------------Observer-----------------
@@ -613,9 +623,8 @@ public class Employee {
 	 */
 	@DOpt(type = OptType.Helper)
 	@AttrRef("dob")
-	private boolean validateDob(Date dob) {
-
-		Date dobMin = new Date(1900, 1, 1);
+	public boolean validateDob(Date dob) {
+		Date dobMin = new Date(0, 0, 1);
 		return dob.after(dobMin);
 	}
 
